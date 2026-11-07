@@ -91,7 +91,7 @@ When the method itself gets in the way, the chief engineer opens an issue on the
 | Milestones | The project's milestones and gates; closed at the meeting that accepts them |
 | Branches | `main`: owner-approved baselines only; `develop`: integration; `wp/<name>`: work packages |
 | Pull requests | One per work package into `develop`; one baseline PR `develop` → `main` per gate, merged by the owner |
-| Actions | `plm validate` and `plm suspects` on every push and pull request (`.github/workflows/plm.yml`) |
+| Actions | `plm validate`, `plm suspects` and the method checks of `scripts/check.py` (owners, requirement wording, page limits) on every push and pull request (`.github/workflows/plm.yml`) |
 | CODEOWNERS, protection | The owner reviews changes to the method and tool configuration; `main` is protected (`scripts/setup.sh --protect`) |
 | Tags | `<gate>-baseline` at each gate go |
 

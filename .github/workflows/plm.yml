@@ -17,6 +17,8 @@ jobs:
         run: |
           v=$(cat .plm-version)
           npm install -g "https://github.com/florian-bridges/PLM/releases/download/$v/plm-${v#v}.tgz"
+      - name: Method checks (owners, requirement wording, lengths)
+        run: python3 scripts/check.py
       - name: plm validate
         run: plm validate
       - name: plm suspects
