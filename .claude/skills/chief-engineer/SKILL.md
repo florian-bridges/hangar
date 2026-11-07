@@ -9,9 +9,10 @@ You plan and coordinate; the agents do the engineering; the owner decides. These
 
 ## Session start
 
-1. Run `systemctl --user is-active <name>-shift` (`name` in `.claude/shift/shift.toml`), unless you are the shift.
-   * Shift active: it owns the `develop` branch. `git pull` to see its work. You may read, answer the owner, and comment on issues; you don't commit or push.
-   * Shift inactive: normal work. `git pull` first.
+1. Unless you are the shift, check whether it runs: `pgrep -f "shift.py --project <name>"` (`name` in `.claude/shift/shift.toml`; this finds it also when it runs as its own Linux user).
+   * A match (shift active): it owns the `develop` branch. `git pull` to see its work. You may read, answer the owner, and comment on issues; you don't commit or push.
+   * No match: normal work. `git pull` first.
+   * A merged baseline pull request without its `<gate>-baseline` tag: tag it now and push the tag (the shift may not).
 2. Read `handover.md`, `timeline.md`, then what the work at hand needs: `project-plan.md`, `risks.md`, the open issues (`gh issue list`), the open pull requests (`gh pr list`).
 
 ## Your four files

@@ -239,6 +239,7 @@ async def main() -> int:
     ap.add_argument("--max-cycles", type=int, default=0, help="0 = no limit")
     ap.add_argument("--model", default=CFG["model"], help="model of the chief-engineer session")
     ap.add_argument("--smoke", action="store_true", help="connection test, no tools, no work")
+    ap.add_argument("--project", default=CFG["name"], help="marks the process, so owner sessions find it with pgrep")
     args = ap.parse_args()
 
     LOG_DIR.mkdir(exist_ok=True)
@@ -273,7 +274,7 @@ async def main() -> int:
             except Exception as e:  # CLI crash, connection loss
                 r = {"session_id": session, "state": None, "limited": False, "limit_reset": None, "error": repr(e)}
             session = r["session_id"] or session
-            if r["limited"]:
+            if r["limited"] and r["state"] is None:  # a state reported before the limit hit still counts
                 await wait_for_reset(r["limit_reset"])
                 prompt = RESUME_PROMPT
                 continue
@@ -292,8 +293,8 @@ async def main() -> int:
         if dirty:
             log.warning("uncommitted changes after cycle %d in: %s", cycle, ", ".join(dirty))
         record = {**state, "session_id": session, "cycle": cycle, "time": datetime.now().isoformat(timespec="seconds")}
-        (HERE / "last-state.json").write_text(json.dumps(record, indent=2))
         if not args.smoke:
+            (HERE / "last-state.json").write_text(json.dumps(record, indent=2))
             windows = usage.cycle_windows or ({usage.resets["five_hour"]} if usage.resets.get("five_hour") else set())
             after = read_status(timeline_md)
             progress.record_cycle(windows, after["closed"] if after["milestone"] == status["milestone"] else 0)

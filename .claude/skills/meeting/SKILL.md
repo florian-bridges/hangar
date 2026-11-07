@@ -24,7 +24,7 @@ The kickoff has no preparation: the owner starts it in a new repository with `/m
 
 ## 2. Hold (interactive, the owner is present)
 
-1. Run `systemctl --user is-active <name>-shift` (`name` in `.claude/shift/shift.toml`). Hold the meeting only while the shift is inactive.
+1. Check that the shift is not running: `pgrep -f "shift.py --project <name>"` (`name` in `.claude/shift/shift.toml`) finds nothing. Hold the meeting only then.
 2. **Open:** the summary of `pack.md` in a few lines. Ask whether to go through the agenda in order or start with a point.
 3. **Each agenda point:** present it in at most ten lines, citing IDs with titles. Then wait for questions.
 4. **Questions:** answer from the items (`plm show`, `grep`, the scripts' output). For detail, spawn the owning agent with one narrow question. Never invent an answer: what the repository cannot answer becomes an action.
@@ -38,7 +38,7 @@ The kickoff has no preparation: the owner starts it in a new repository with `/m
 2. Each action becomes an issue: `gh issue create` with `owner:<agent>`, the milestone and the *done when* line.
 3. The MTG item: actual `date`, `decided` (the new DEC IDs), `verdict`, and the artifact `minutes.md`: the questions that changed something, the decisions, the actions with issue numbers. Nothing else.
 4. By kind:
-   * **Gate go:** set `approved` on the items in scope; open a pull request `develop` → `main` (`gh pr create --base main --head develop --title "<Gate> baseline"`) for the owner to merge; after the merge, tag `<gate>-baseline` and push the tag; close the GitHub milestone.
+   * **Gate go:** set `approved` on the items in scope; open a pull request `develop` → `main` (`gh pr create --base main --head develop --title "<Gate> baseline"`); the owner merges it in the meeting, or tells you to (`gh pr merge`); then tag `<gate>-baseline` and push the tag; close the GitHub milestone. If the owner merges later, the next owner session tags it.
    * **Go with conditions:** as go, and each condition becomes an issue labelled `gate-condition` on the next milestone.
    * **No-go, rework:** the rework becomes issues on the same milestone; the milestone stays open.
    * **Re-plan:** the owner's new budget and scope go into `timeline.md`.

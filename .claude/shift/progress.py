@@ -26,7 +26,7 @@ def read_status(path: Path) -> dict:
     """Milestone, budget and checklist counts from timeline.md."""
     text = path.read_text() if path.exists() else ""
     milestone = re.search(r"\*\*Next milestone: ([^*]+?)\.?\*\*", text)
-    budget = re.search(r"^Budget: ([\d.]+) windows", text, re.M)
+    budget = re.search(r"^Budget: ([\d.]+) windows?", text, re.M)
     section = text.split("### Entry conditions", 1)[-1].split("\n#", 1)[0] if "### Entry conditions" in text else ""
     boxes = re.findall(r"^\s*- \[([ xX])\]", section, re.M)
     return {
@@ -51,7 +51,8 @@ class Progress:
             if self.data.get("milestone"):
                 self.data.setdefault("history", []).append(
                     {"milestone": self.data["milestone"], "windows": len(self.data.get("windows", []))})
-            self.data.update(milestone=status["milestone"], windows=[], closed=status["closed"])
+            self.data.update(milestone=status["milestone"], windows=[])
+        self.data["closed"] = status["closed"]  # the owner accepts the checklist as it stands
         self.data["budget"] = status["budget"]
         self.data["progress_window"] = max(self.data["windows"], default=None)
 
