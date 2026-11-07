@@ -26,7 +26,7 @@ git lfs install --local >/dev/null
 version=$(cat .plm-version)
 if [ -z "$PLM_SKIP_INSTALL" ]; then
   echo "installing plm $version"
-  npm install -g "github:florian-bridges/PLM#$version"
+  npm install -g "https://github.com/florian-bridges/PLM/releases/download/$version/plm-${version#v}.tgz"
 fi
 plm validate
 

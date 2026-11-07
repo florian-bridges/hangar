@@ -14,7 +14,9 @@ jobs:
         with:
           node-version: 22
       - name: Install plm at the pinned version
-        run: npm install -g "github:florian-bridges/PLM#$(cat .plm-version)"
+        run: |
+          v=$(cat .plm-version)
+          npm install -g "https://github.com/florian-bridges/PLM/releases/download/$v/plm-${v#v}.tgz"
       - name: plm validate
         run: plm validate
       - name: plm suspects
