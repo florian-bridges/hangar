@@ -123,7 +123,7 @@ log = logging.getLogger("shift")
 def notify(title: str, message: str, issue: bool = False) -> None:
     """Log, push via ntfy if configured, and for a blocker open a needs-owner issue."""
     log.info("NOTIFY %s: %s", title, message)
-    topic = CFG.get("ntfy_topic")
+    topic = CFG.get("ntfy_topic") or os.environ.get("SHIFT_NTFY_TOPIC")
     if topic:
         req = urllib.request.Request(f"https://ntfy.sh/{topic}", data=message.encode(), headers={"Title": title})
         try:

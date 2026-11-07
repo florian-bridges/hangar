@@ -6,7 +6,7 @@ model = "opus"             # model of the chief-engineer session
 branch = "develop"         # the shift integrates here; main holds owner-approved baselines
 workdir = "../hangar-run"  # the shift's own clone, relative to the repository root ("." = this checkout)
 worktrees = "../hangar-wt" # agents' worktrees, relative to the repository root
-ntfy_topic = ""            # optional phone push via ntfy.sh (public: anyone who knows the topic reads it)
+ntfy_topic = ""            # optional phone push via ntfy.sh; better SHIFT_NTFY_TOPIC in the env file (public: anyone who knows the topic reads it)
 
 [limits]
 wrap_up_pct = 60.0      # context %: tell the chief engineer to finish the cycle

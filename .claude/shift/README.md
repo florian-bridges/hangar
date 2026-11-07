@@ -8,7 +8,7 @@ The shift runs the chief engineer unattended with the Claude Agent SDK until the
 .claude/shift/run.sh --smoke          # connection test, no work
 ```
 
-As a service: `systemd/shift.service` (start and stop by hand) and `systemd/remote.service` (Claude app access, starts at boot); install notes are in the files. Settings: `shift.toml` (owner only).
+As a service: `systemd/shift.service` (start and stop by hand) and `systemd/remote.service` (Claude app access, starts at boot); install notes are in the files. Settings: `shift.toml` (owner only), per-host overrides in `shift.local.toml` (untracked). The service reads `~/.config/<name>-shift.env`: `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token`, and optionally `SHIFT_NTFY_TOPIC`. Keep the token out of interactive shells: Remote Control needs the full login and fails with it set.
 
 ## How it works
 
@@ -18,7 +18,7 @@ As a service: `systemd/shift.service` (start and stop by hand) and `systemd/remo
 * **Usage limit:** at `usage_wrap_up` of the 5-hour limit the chief engineer starts no new agent and ends the cycle; above `usage_start_max` the runner waits for the reset before a cycle. If the limit is hit anyway, it sleeps until the reset and resumes the same session.
 * **Context budget (`budget.py`):** long tool output is cut; at `wrap_up_pct` the chief engineer ends the cycle, at `hard_pct` the turn is interrupted for a wrap-up.
 * **Guard (`guard.py`):** a PreToolUse hook on every tool call, subagents included. It blocks forced, bulk and delete pushes, anything on `main`, baseline tags, `status: approved`, repository settings and deletions through `gh`, writes outside the shift's clone and the agents' worktrees, and changes to this folder. It guards against mistakes; branch protection on `main` is the real barrier.
-* **Notifications:** a prepared meeting is a GitHub issue labelled `meeting`; a blocker or a runner stop opens a `needs-owner` issue. GitHub notifies the owner. Optional: a push via ntfy.sh (`ntfy_topic`; public, anyone who knows the topic can read it).
+* **Notifications:** a prepared meeting is a GitHub issue labelled `meeting`; a blocker or a runner stop opens a `needs-owner` issue. GitHub notifies the owner. Optional: a push via ntfy.sh (`SHIFT_NTFY_TOPIC` or `ntfy_topic`; public, anyone who knows the topic can read it).
 * **Stop:** any state but `continue`, 3 errors in a row, or `--max-cycles`. The last state is in `last-state.json`, the full log in `logs/`.
 
 If `ANTHROPIC_API_KEY` is set, the shift is billed to the API instead of your plan, and the log warns about it.
