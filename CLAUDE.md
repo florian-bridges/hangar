@@ -104,7 +104,7 @@ Only the owner decides: in owner meetings (skill `meeting`) and on `needs-owner`
 
 ## PLM tool
 
-This project uses `plm` at the version pinned in `.plm-version`; it does not develop it. When `plm` gets in the way (a limitation, a confusing behaviour, a missing feature), open an issue on https://github.com/florian-bridges/PLM/issues: the need, the reason, an example from this project, and the cost of the workaround. Don't build a workaround that costs more than about one cycle or adds a script or hand-kept number doing what the tool should do; tell the chief engineer.
+This project uses `plm` at the version pinned in `.plm-version`; it does not develop it. Its problems are solved separately in the PLM repository, so report every one, small ones too: when `plm` gets in the way (a limitation, a confusing behaviour, a missing feature, a crash), search the open issues (`gh issue list -R florian-bridges/PLM --search "<words>"`) and comment on a matching one, or open a new issue on https://github.com/florian-bridges/PLM/issues: the need, the reason, an example from this project, and the cost of the workaround. Don't build a workaround that costs more than about one cycle or adds a script or hand-kept number doing what the tool should do; tell the chief engineer.
 
 ## Commits
 

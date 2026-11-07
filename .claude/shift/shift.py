@@ -1,6 +1,6 @@
 """The shift: the chief engineer works unattended until an owner meeting, a blocker or the end.
 
-Each cycle is a fresh chief-engineer session in the shift's own worktree that does
+Each cycle is a fresh chief-engineer session in the shift's own clone that does
 one work package, updates handover.md and timeline.md, commits and reports a state. When the usage
 limit is hit, the job sleeps until the limit resets and resumes the same session.
 When the state needs the owner, it stops and notifies.
@@ -62,7 +62,7 @@ STATE_SCHEMA = {
 RUN_RULES = """
 # Shift
 
-You are the chief engineer on shift: you work unattended in the shift's own worktree on `develop`. The owner is not available until you stop. **Load the skill `chief-engineer` first**: its planning, steering, GitHub and review rules apply on shift as well. The rules below add what is specific to the shift.
+You are the chief engineer on shift: you work unattended in the shift's own clone on `develop`. The owner is not available until you stop. **Load the skill `chief-engineer` first**: its planning, steering, GitHub and review rules apply on shift as well. The rules below add what is specific to the shift.
 
 ## Cycles
 

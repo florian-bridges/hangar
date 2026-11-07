@@ -11,5 +11,5 @@ if LOCAL.exists():
     local = tomllib.loads(LOCAL.read_text())
     CFG = {**CFG, **{k: v for k, v in local.items() if k != "limits"}, "limits": {**CFG["limits"], **local.get("limits", {})}}
 LIMITS = CFG["limits"]
-WORKDIR = (ROOT / CFG["workdir"]).resolve()  # the shift's worktree on CFG["branch"], or ROOT itself
+WORKDIR = (ROOT / CFG["workdir"]).resolve()  # the shift's own clone on CFG["branch"], or ROOT itself
 WORKTREES = (ROOT / CFG["worktrees"]).resolve()

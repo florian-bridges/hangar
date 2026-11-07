@@ -67,7 +67,7 @@ Between meetings, a question that blocks only part of the work is a `needs-owner
 
 ## 7. The shift
 
-The shift (`.claude/shift/`) runs the chief engineer unattended in cycles, as a systemd user service, in its own git worktree on `develop`. Each cycle is a fresh session doing one work package. It stops for the owner when a meeting is prepared, when it is blocked, or when nothing is left; the owner gets a GitHub notification. The runner measures progress in usage windows against the budget the owner set and stops the shift when a milestone stalls or overruns. A guard hook blocks owner actions (anything on `main`, baseline tags, approvals, repository settings, forced or deleting git operations). Details: `.claude/shift/README.md`.
+The shift (`.claude/shift/`) runs the chief engineer unattended in cycles, as a systemd user service, in its own clone of the repository on `develop`. Each cycle is a fresh session doing one work package. It stops for the owner when a meeting is prepared, when it is blocked, or when nothing is left; the owner gets a GitHub notification. The runner measures progress in usage windows against the budget the owner set and stops the shift when a milestone stalls or overruns. A guard hook blocks owner actions (anything on `main`, baseline tags, approvals, repository settings, forced or deleting git operations). Details: `.claude/shift/README.md`.
 
 ## 8. The chief engineer's files
 
