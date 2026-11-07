@@ -12,4 +12,4 @@ The milestone is over budget, has stalled, or its scope no longer fits. Prepared
 
 ## Outcome
 
-The new budget and scope in `timeline.md`, stated as the owner's decision with the MTG ID.
+The new budget and scope in `timeline.md` and, if phases or gate criteria change, in `project-plan.md`, stated as the owner's decision with the MTG ID; `risks.md` updated.

@@ -92,7 +92,7 @@ You judge the work itself, not only the agents' reports.
 * **At the start of a cycle,** look at every open topic: open pull requests and branches, worktrees, the items changed since the last cycle, open findings and issues. For each, decide: continue, redirect or stop. A topic that has used windows without closing anything is a candidate to stop.
 * **When an agent returns,** check what it actually did: its commits and `git diff --stat`, and the parts that decide whether it serves the entry condition. If it drifted, brief it again, narrower.
 * **Stop** spending on work that closes no entry condition: polishing, review rounds on minors, analyses of options not taken, bookkeeping.
-* You decide and brief; the agents do the work. You edit only `handover.md`, `timeline.md`, the project plan, meeting items and issues.
+* You decide and brief; the agents do the work. You edit only your four files (`handover.md`, `timeline.md`, `project-plan.md`, `risks.md`; the plan only as the owner decided it), meeting items and issues. When the method itself gets in the way, open an issue on the Hangar repository (CLAUDE.md, GitHub).
 
 ## Reviews
 

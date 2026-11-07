@@ -6,7 +6,7 @@ Ends the project. Prepared when the last milestone of the project plan is accept
 
 1. **Results against the goals** of the project plan.
 2. **Open items:** open findings, TBDs, unverified requirements, open issues; each closed, transferred or accepted as open.
-3. **Lessons learned:** what worked and what did not, for the method (agents, meetings, shift) and for the PLM tool.
+3. **Lessons learned:** what worked and what did not, for the method (agents, meetings, shift) and for the PLM tool, beyond the issues already opened during the project; the final state of `risks.md`.
 4. **Decision:** closed, or closed with open items.
 
 ## Outcome

@@ -28,3 +28,4 @@ At every milestone and gate, review the scope given to you for hazards without m
 
 * Cite the regulation article or AMC/GM paragraph for each regulatory claim, with its source.
 * Never close your own findings on others' items. The author fixes, you verify and close.
+* Project risks (schedule, feasibility, resources) go to the chief engineer for `risks.md`; hazards of the product are your `HAZ-` items.

@@ -2,7 +2,7 @@
 
 An aviation product repository built from the Hangar template. It uses the PLM tool (CLI `plm`, see `plm --help`). A team of agents in `.claude/agents/` designs the product along the V-model. The main session is the **chief engineer**; the owner (the user) decides in owner meetings.
 
-Read first: `handover.md` (it names the system item and its folder), `timeline.md`, the `conops.md` and `project-plan.md` of the system item, and `plm show` of the items you work on. `PROCESS.md` describes the whole process for people.
+Read first: `handover.md` (it names the system item and its folder), `timeline.md`, `project-plan.md`, the `conops.md` of the system item, and `plm show` of the items you work on. `PROCESS.md` describes the whole process for people.
 
 ## Repository
 
@@ -56,6 +56,7 @@ Read first: `handover.md` (it names the system item and its folder), `timeline.m
 ## Ownership and status
 
 * Every item has one owner: `owner: <agent-name>` in its `meta/<ID>.yaml`. Only the owner edits an item. Others raise findings or send a message to the owner.
+* The four files at the repository root (`handover.md`, `timeline.md`, `project-plan.md`, `risks.md`) belong to the chief engineer.
 * Status in `meta/<ID>.yaml`: `draft` → `in-review` → `approved`. Items become `approved` only after the owner's go in a gate meeting.
 * `plm search owner:<agent-name>` lists an agent's items.
 
@@ -92,12 +93,14 @@ The repository is the memory, not the conversation. Usage and context are limite
 * **Fetch a source once.** Write the values you need from it, with URL and date, into the analysis script.
 * **Handover:** a new session starts from `handover.md`, `timeline.md` and the open issues, not from the history.
 
-## Handover and timeline
+## The chief engineer's files
 
-The chief engineer keeps both current at every merge and at the end of every shift cycle. Current state only; history is in git.
+The chief engineer keeps four files at the repository root, current state only; history is in git. `handover.md` and `timeline.md` are updated at every merge and at the end of every shift cycle; `project-plan.md` and `risks.md` whenever they change, at the latest for each meeting.
 
 * `handover.md`: what the next session needs to start: the system item, the active topics with their one next step, open pull requests, blockers, and the owner's standing directions with their DEC IDs. At most about one page.
 * `timeline.md`: the project timeline. **Overview:** every phase, milestone and gate with its budget in 5-hour usage windows, the windows used and its state (done with its MTG ID, active, planned). **Active milestone:** `**Next milestone: <name>.**`, `Budget: <n> windows.` (set by the owner in a meeting), the entry conditions as `- [ ]`/`- [x]` lines with a *done when* each, the active topics with their issue or pull request, and the coming owner meetings. The shift reads these lines; keep their form.
+* `project-plan.md`: goal, given decisions and resources, team, phases and their content, review and gate criteria. Changed only with the owner's agreement in a meeting.
+* `risks.md`: the risk register: risk, likelihood, impact, mitigation, state and the IDs behind it. Presented at every gate and status meeting. Safety hazards are `HAZ-` items, not risks.
 
 ## GitHub
 
@@ -108,6 +111,7 @@ The engineering record is the items. GitHub carries the work around them. Use `g
 * **Branches:** `main` holds owner-approved baselines only, one merge per passed gate, tagged `<gate>-baseline`. Work integrates on `develop`. Each work package is a branch `wp/<name>` and a pull request into `develop`; CI must be green before it is merged.
 * **Owner answers** arrive as comments on `needs-owner` issues. The chief engineer records each answer as an item (`DEC-…` or an owner-constraint requirement), links the issue in the commit and closes it.
 * Problems with the PLM tool are issues on the PLM repository (see PLM tool), not here.
+* When the method itself gets in the way (an agent definition, a rule, the meeting procedure, the shift, a template file), the chief engineer opens an issue on https://github.com/florian-bridges/hangar/issues: what happened, the cost to this project, a proposal. Project work goes on with the current method.
 
 ## Owner meetings
 
