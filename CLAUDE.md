@@ -8,7 +8,7 @@ An aviation product repository built from the Hangar template. It uses the PLM t
 
 * Everything lives here: requirements, analyses, decisions, interfaces, CAD, software source, test cases, runs, reviews and meeting records.
 * Items are folders with an `item.yaml`, named after their title. Nesting is the product structure: an item sits in the folder of its type inside the item it belongs to (`requirements/`, `tests/`, `analyses/`, `decisions/`, `interfaces/`, `reviews/`, `meetings/`, `subsystems/`, `parts/`, `software/`). No other grouping folders, except thematic subfolders in `requirements/`.
-* The system item is the top-level assembly created at the kickoff. Its subsystems are assemblies in `subsystems/`, each with its own `requirements/` and `tests/` and its own sub-assemblies, as deep as the design needs. Requirements, designs and tests sit in the subsystem they constrain; the parent keeps only what spans its subsystems.
+* The system item is the top-level assembly created at the kickoff. Its subsystems are assemblies in `subsystems/`, each with its own `requirements/` and `tests/` and its own sub-assemblies, as deep as the design needs. Requirements, designs and tests sit in the subsystem they constrain; the parent keeps only what spans its subsystems. Safety items sit at system level or in the subsystem they concern; software items sit in the subsystem they run in.
 * A verification environment (simulation, test bench) is a separate top-level assembly: a test tool, not part of the product.
 * Run `plm new <type> "<title>"` inside the folder of the parent item. It prints the new ID.
 * Large binaries (terrain data, meshes, images, logs) go into Git LFS (`.gitattributes`).
