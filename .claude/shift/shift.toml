@@ -1,4 +1,5 @@
 # Configuration of the shift, the unattended chief-engineer run. Owner only: the guard keeps agents out of this folder.
+# Per-host overrides go into shift.local.toml (untracked), e.g. workdir = "." when the shift runs in its own clone.
 
 name = "hangar"            # project name; systemd units <name>-shift and <name>-remote
 model = "opus"             # model of the chief-engineer session

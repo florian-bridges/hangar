@@ -95,7 +95,7 @@ When the method itself gets in the way, the chief engineer opens an issue on the
 | CODEOWNERS, protection | The owner reviews changes to the method and tool configuration; `main` is protected (`scripts/setup.sh --protect`) |
 | Tags | `<gate>-baseline` at each gate go |
 
-Agents use `gh` with the credentials of the machine they run on. A separate GitHub account for the shift, with write access but no admin rights, keeps the owner's approval meaningful.
+Agents use `gh` with the credentials of the account they run under. The shift should run as its own Linux user with its own GitHub account (write access, no admin rights, `main` protected): it then cannot read the owner's files, merge baselines or change settings (`.claude/shift/README.md`).
 
 ## 10. Tools
 
