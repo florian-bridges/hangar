@@ -50,5 +50,5 @@ The kickoff has no preparation: the owner starts it in a new repository with `/m
 
 * The owner's time is the scarce resource: short pack, short answers, one question per decision.
 * Present only the current state; history is in git.
-* Done topics are not reopened (CLAUDE.md, Reviews) unless the owner decides so in the meeting.
+* Done topics are not reopened (skill `chief-engineer`, Planning and steering) unless the owner decides so in the meeting.
 * Nothing is recorded as decided that the owner did not say.

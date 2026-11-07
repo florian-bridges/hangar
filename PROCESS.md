@@ -1,6 +1,6 @@
 # The Hangar development process
 
-Hangar develops an aviation product with a team of AI agents along the V-model. The owner (a person) sets the goal and takes every decision in owner meetings. The chief engineer (the main Claude Code session) plans and coordinates; discipline agents do the engineering and independent reviewers check it. The whole engineering record (requirements, analyses, decisions, interfaces, CAD, software, tests, reviews and meeting records) lives in this repository as traceable items managed with the PLM tool `plm`. GitHub carries the work around the items: issues, pull requests, CI and baselines. The shift lets the chief engineer work unattended until the owner is needed. This document describes the process; the binding rules for the agents are in `CLAUDE.md`.
+Hangar develops an aviation product with a team of AI agents along the V-model. The owner (a person) sets the goal and takes every decision in owner meetings. The chief engineer (the main Claude Code session) plans and coordinates; discipline agents do the engineering and independent reviewers check it. The whole engineering record (requirements, analyses, decisions, interfaces, CAD, software, tests, reviews and meeting records) lives in this repository as traceable items managed with the PLM tool `plm`. GitHub carries the work around the items: issues, pull requests, CI and baselines. The shift lets the chief engineer work unattended until the owner is needed. This document describes the process; the binding rules are in `CLAUDE.md` (all agents) and the skill `.claude/skills/chief-engineer/` (the chief engineer only).
 
 ## 1. Roles
 
@@ -117,7 +117,7 @@ Engineering tools (CAD, simulators, flight control software) are chosen per proj
 ## 11. Repository
 
 ```
-CLAUDE.md          rules for the agents
+CLAUDE.md          rules for all agents
 PROCESS.md         this document
 handover.md        start of every session
 timeline.md        overall picture and active milestone
@@ -126,7 +126,7 @@ risks.md           risk register
 plm.yaml, schemas/ item types and fields
 .plm-version       plm version used
 .claude/agents/    the team
-.claude/skills/    meeting procedure and agendas
+.claude/skills/    chief-engineer rules, meeting procedure and agendas
 .claude/shift/     unattended run
 .github/           issue forms, PR template, CI, CODEOWNERS
 scripts/setup.sh   one-time project setup
