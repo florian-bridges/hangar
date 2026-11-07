@@ -12,7 +12,7 @@ How it all works: [PROCESS.md](PROCESS.md). Rules for the agents: [CLAUDE.md](CL
 
 ## Start a project
 
-Needs git with Git LFS, Node.js ≥ 22.18, the GitHub CLI (`gh auth login`), Claude Code, and `uv` for the shift.
+Needs git with Git LFS, Node.js ≥ 22.18, the GitHub CLI ≥ 2.40 (`gh auth login`), Claude Code, and `uv` for the shift.
 
 1. **Use this template** → create the new repository, and clone it.
 2. `scripts/setup.sh --protect`: installs `plm`, creates the labels and the `develop` branch, protects `main`.

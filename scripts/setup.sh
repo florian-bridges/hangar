@@ -16,6 +16,11 @@ need gh "GitHub CLI, https://cli.github.com, then: gh auth login"
 need claude "Claude Code, https://claude.com/claude-code"
 need uv "only for the shift, https://docs.astral.sh/uv"
 [ "$missing" = 0 ] || exit 1
+gh_version=$(gh --version | sed -n '1s/^gh version \([0-9]*\.[0-9]*\).*/\1/p')
+if [ "$(printf '%s\n2.40\n' "$gh_version" | sort -V | head -1)" != "2.40" ]; then
+  echo "gh $gh_version is too old (needs >= 2.40): https://github.com/cli/cli/blob/trunk/docs/install_linux.md"
+  exit 1
+fi
 
 git lfs install --local >/dev/null
 version=$(cat .plm-version)
