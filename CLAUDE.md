@@ -7,7 +7,7 @@ An aviation product repository built from the Hangar template. It uses the PLM t
 ## Repository
 
 * Everything lives here: requirements, analyses, decisions, interfaces, CAD, software source, test cases, runs, reviews and meeting records.
-* Items are folders with an `item.yaml`, named after their title. Nesting is the product structure: an item sits in the folder of its type inside the item it belongs to (`requirements/`, `tests/`, `analyses/`, `decisions/`, `interfaces/`, `reviews/`, `meetings/`, `subsystems/`, `parts/`, `software/`). No other grouping folders, except thematic subfolders in `requirements/`.
+* Items are folders with an `item.yaml`, named after their title. Nesting is the product structure: an item sits in the folder of its type inside the item it belongs to (`requirements/`, `tests/`, `analyses/`, `decisions/`, `interfaces/`, `hazards/`, `reviews/`, `meetings/`, `subsystems/`, `parts/`, `software/`). No other grouping folders, except thematic subfolders in `requirements/`.
 * The system item is the top-level assembly created at the kickoff. Its subsystems are assemblies in `subsystems/`, each with its own `requirements/` and `tests/` and its own sub-assemblies, as deep as the design needs. Requirements, designs and tests sit in the subsystem they constrain; the parent keeps only what spans its subsystems. Safety items sit at system level or in the subsystem they concern; software items sit in the subsystem they run in.
 * A verification environment (simulation, test bench) is a separate top-level assembly: a test tool, not part of the product.
 * Run `plm new <type> "<title>"` inside the folder of the parent item. It prints the new ID.
@@ -41,7 +41,8 @@ An aviation product repository built from the Hangar template. It uses the PLM t
 
 ## Requirements
 
-* "The <item> shall …": atomic, one "shall", measurable value with unit or pass/fail criterion, no "and/or", "should" or "as far as possible".
+* "The <item> shall …": atomic, one "shall", measurable value with unit or pass/fail criterion, no vague words ("should", "and/or", "as far as possible", "if possible", "adequate", "appropriate", "sufficient", "etc."; `scripts/check.py` checks them).
+* Needs, in `needs/` or `stakeholder-needs/` folders, read "<stakeholder> needs …" and have no "shall".
 * The title names the requirement; the value is only in `text`.
 * Never invent a value. Write `TBD`, give the reason in the rationale, and raise it with the chief engineer.
 * No duplicates. Fewer, sharper requirements beat many.
@@ -108,6 +109,6 @@ This project uses `plm` at the version pinned in `.plm-version`; it does not dev
 
 ## Commits
 
-* Work on the branch of your work package (`wp/<name>`). When you need your own worktree, create it in the worktrees folder (`worktrees` in `.claude/shift/shift.toml`): `git worktree add <worktrees>/<name> wp/<name>`; nowhere else.
+* Work on the branch of your work package (`wp/<name>`). When you need your own worktree, create it in the worktrees folder (`worktrees` in `.claude/shift/shift.toml`): `git worktree add -b wp/<name> <worktrees>/<name> develop` (or without `-b` for an existing branch); nowhere else.
 * **Commit after every step:** each item created or changed, each analysis run, each response to findings. Name the item IDs in the message. Unfinished work is committed too, with a message starting `WIP:`. **Push the branch after every commit** (`git push -u origin <branch>`; never `main`, never force). Never end your turn or hand over with uncommitted changes.
 * Commit messages do not include a `Co-Authored-By: Claude` line or any other Claude attribution.

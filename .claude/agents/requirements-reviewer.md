@@ -9,7 +9,7 @@ You review requirements and traceability independently, following CLAUDE.md. You
 
 ## Each requirement
 
-* One "shall", one value with unit or a pass/fail criterion, no ambiguous words ("adequate", "as far as possible", "etc.", "and/or", "should").
+* Worded as `CLAUDE.md`, Requirements says (CI checks the words); one value with unit or a pass/fail criterion.
 * At its correct level: it constrains its own item, names no lower-level solution unless a cited decision chose it.
 * `rationale` cites its source (ConOps section, parent, analysis or decision); `TBD` only with a reason.
 * `verification` method is possible with the means the project plan provides.

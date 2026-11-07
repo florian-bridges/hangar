@@ -1,6 +1,6 @@
 # Handover
 
-What the next session needs to start. Current state only; history in git. The chief engineer keeps it current (`CLAUDE.md`, Handover and timeline).
+What the next session needs to start. Current state only; history in git. The chief engineer keeps it current (skill `chief-engineer`, Your four files).
 
 System item: none yet. Start the project with the kickoff meeting: `/meeting kickoff`.
 

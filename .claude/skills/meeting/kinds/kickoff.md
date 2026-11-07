@@ -16,10 +16,10 @@ Starts a new project from the template. No pack: the chief engineer interviews t
 
 ## Outcome
 
-* The system item: `plm new assembly "<System title>"` at the repository root, with `conops.md` as artifact and its stakeholder needs as requirements in `requirements/stakeholder-needs/`.
+* The system item: `plm new assembly "<System title>"` at the repository root, with `conops.md` as artifact and its stakeholder needs as requirements in `requirements/stakeholder-needs/`; drafted by the chief engineer in the meeting, owned by `systems-engineer` from then on.
 * `project-plan.md` filled from its template, and `risks.md` with the first risks.
-* The owner-constraint requirements and a `DEC-…` for the regulatory basis.
-* `.claude/agents/` and `schemas/meta.schema.json` trimmed to the team.
+* The owner-constraint requirements (owner `systems-engineer`) and a `DEC-…` for the regulatory basis (owner `safety-engineer`).
+* `.claude/agents/`, `schemas/meta.schema.json` and the owner list of `.github/ISSUE_TEMPLATE/work-package.yml` trimmed to the team (`scripts/check.py` checks they agree).
 * GitHub milestones for every milestone and gate: `gh api repos/{owner}/{repo}/milestones -f title="<name>"`.
 * `timeline.md` filled: all phases, milestones and gates with their budgets; the first milestone (usually SRR) active with its entry conditions.
 * `handover.md` filled: system item, owner directions with their DEC IDs, next step.

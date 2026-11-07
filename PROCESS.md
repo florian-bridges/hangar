@@ -92,7 +92,7 @@ When the method itself gets in the way, the chief engineer opens an issue on the
 | Branches | `main`: owner-approved baselines only; `develop`: integration; `wp/<name>`: work packages |
 | Pull requests | One per work package into `develop`; one baseline PR `develop` → `main` per gate, merged by the owner |
 | Actions | `plm validate`, `plm suspects` and the method checks of `scripts/check.py` (owners, requirement wording, page limits) on every push and pull request (`.github/workflows/plm.yml`) |
-| CODEOWNERS, protection | The owner reviews changes to the method and tool configuration; `main` is protected (`scripts/setup.sh --protect`) |
+| CODEOWNERS, protection | `main` is protected (`scripts/setup.sh --protect`; public repositories or paid plans): a baseline needs the owner, as code owner of the method and tool configuration, at the baseline pull request |
 | Tags | `<gate>-baseline` at each gate go |
 
 Agents use `gh` with the credentials of the account they run under. The shift should run as its own Linux user with its own GitHub account (write access, no admin rights, `main` protected): it then cannot read the owner's files, merge baselines or change settings (`.claude/shift/README.md`).
@@ -130,14 +130,12 @@ plm.yaml, schemas/ item types and fields
 .claude/shift/     unattended run
 .github/           issue forms, PR template, CI, CODEOWNERS
 scripts/setup.sh   one-time project setup
+scripts/check.py   method checks run by CI
 <system item>/     created at the kickoff: conops.md, requirements, subsystems, …
 ```
 
 ## 12. Starting and updating a project
 
-1. On GitHub: **Use this template** → new repository. Clone it on the host.
-2. `scripts/setup.sh --protect`.
-3. Start Claude Code in the repository and run `/meeting kickoff`.
-4. Optionally install the shift (`.claude/shift/README.md`) and start it after the kickoff.
+Start: the steps in `README.md`.
 
-To take later improvements of the template: `git remote add hangar https://github.com/florian-bridges/hangar && git fetch hangar && git merge hangar/main`. This merges cleanly as long as project specifics stay out of the generic files (`CLAUDE.md`, `PROCESS.md`, `.claude/`); put them into the project plan and the items. The chief engineer's four files are skeletons in the template and the project's own afterwards: keep the project's version on a merge conflict. Lessons learned for the method go to the Hangar issues, for the tool to the PLM issues.
+To take later improvements of the template: `git remote add hangar https://github.com/florian-bridges/hangar && git fetch hangar && git merge hangar/main`. This merges cleanly as long as project specifics stay out of the generic files (`CLAUDE.md`, `PROCESS.md`, `.claude/`); put them into the project plan and the items. Files a project changes on purpose are its own afterwards; on a merge conflict keep the project's version: the chief engineer's four files, `.claude/shift/shift.toml`, the agents removed at the kickoff with `schemas/meta.schema.json` and `.github/ISSUE_TEMPLATE/work-package.yml`, and `.github/CODEOWNERS`. Lessons learned for the method go to the Hangar issues, for the tool to the PLM issues.

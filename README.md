@@ -3,7 +3,7 @@
 A template repository for aviation projects developed by a team of AI agents along the V-model, with a PLM record of every requirement, analysis, decision, design, test and review.
 
 * **Agents:** a chief engineer (the main Claude Code session) and discipline engineers and independent reviewers in `.claude/agents/`.
-* **Owner meetings:** the owner decides in a kickoff, gates (SRR, PDR, CDR), milestone reviews, decision meetings and re-plans (`/meeting`).
+* **Owner meetings:** the owner decides in a kickoff, gates (SRR, PDR, CDR), milestone reviews, decision meetings, re-plans, status meetings and the close-out (`/meeting`).
 * **PLM:** items, traceability and suspects with [`plm`](https://github.com/florian-bridges/PLM), pinned in `.plm-version`.
 * **GitHub:** issues for work and owner questions, pull requests per work package, CI checks, baselines on `main`.
 * **The shift:** the chief engineer works unattended until the owner is needed.
@@ -15,8 +15,10 @@ How it all works: [PROCESS.md](PROCESS.md). Rules for the agents: [CLAUDE.md](CL
 Needs git with Git LFS, Node.js ≥ 22.18, the GitHub CLI ≥ 2.40 (`gh auth login`), Claude Code, and `uv` for the shift.
 
 1. **Use this template** → create the new repository, and clone it.
-2. `scripts/setup.sh --protect`: installs `plm`, creates the labels and the `develop` branch, protects `main`.
-3. Start Claude Code in the repository and run `/meeting kickoff`.
+2. In `.github/CODEOWNERS`, replace `@florian-bridges` with your GitHub account.
+3. `scripts/setup.sh --protect`: installs `plm`, creates the labels and the `develop` branch (now the default branch, checked out), protects `main` (public repositories or paid plans only).
+4. Start Claude Code in the repository and run `/meeting kickoff`.
+5. Optionally install the shift (`.claude/shift/README.md`) and start it after the kickoff.
 
 The template was derived from the autonomous-fixed-wing project, an autonomous low-level fixed-wing UAS designed with this method.
 

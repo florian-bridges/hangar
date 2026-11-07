@@ -14,8 +14,8 @@ need node "Node.js >= 22.18, https://nodejs.org"
 need npm "comes with Node.js"
 need gh "GitHub CLI, https://cli.github.com, then: gh auth login"
 need claude "Claude Code, https://claude.com/claude-code"
-need uv "only for the shift, https://docs.astral.sh/uv"
 [ "$missing" = 0 ] || exit 1
+command -v uv >/dev/null || echo "note: uv is missing; only the shift needs it (https://docs.astral.sh/uv)"
 gh_version=$(gh --version | sed -n '1s/^gh version \([0-9]*\.[0-9]*\).*/\1/p')
 if [ "$(printf '%s\n2.40\n' "$gh_version" | sort -V | head -1)" != "2.40" ]; then
   echo "gh $gh_version is too old (needs >= 2.40): https://github.com/cli/cli/blob/trunk/docs/install_linux.md"
@@ -49,6 +49,8 @@ if ! git ls-remote --exit-code --heads origin develop >/dev/null; then
   git branch develop main 2>/dev/null || true
   git push -u origin develop
 fi
+git fetch -q origin develop && git switch -q develop
+gh repo edit --default-branch develop >/dev/null   # pull requests and "Closes #n" work against develop
 
 if [ "$1" = "--protect" ]; then
   echo "protecting main"

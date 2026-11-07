@@ -10,6 +10,9 @@ LOCAL = HERE / "shift.local.toml"  # per-host overrides, e.g. workdir = "." for 
 if LOCAL.exists():
     local = tomllib.loads(LOCAL.read_text())
     CFG = {**CFG, **{k: v for k, v in local.items() if k != "limits"}, "limits": {**CFG["limits"], **local.get("limits", {})}}
+CFG["name"] = CFG.get("name") or ROOT.name
+CFG["workdir"] = CFG.get("workdir") or f"../{CFG['name']}-run"
+CFG["worktrees"] = CFG.get("worktrees") or f"../{CFG['name']}-wt"
 LIMITS = CFG["limits"]
 WORKDIR = (ROOT / CFG["workdir"]).resolve()  # the shift's own clone on CFG["branch"], or ROOT itself
 WORKTREES = (ROOT / CFG["worktrees"]).resolve()

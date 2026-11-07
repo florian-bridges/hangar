@@ -50,4 +50,3 @@ Default phases, tailored at the kickoff:
 | PDR | Concept and preliminary design complete, *Sim ready* accepted | Architecture, sizing and subsystem requirements agreed; every requirement allocated and has a test case |
 | CDR | Implementation and detailed design complete, *Integrated* accepted | Design complete and buildable; budgets closed with margin; functions verified in simulation and on the bench |
 
-After the owner's go, the items in scope become `approved` and `main` gets the baseline.

@@ -1,12 +1,59 @@
 {
-  "required": ["kind", "date", "agenda"],
+  "required": [
+    "kind",
+    "date",
+    "agenda"
+  ],
   "properties": {
-    "kind": { "enum": ["kickoff", "gate", "milestone", "decision", "replan", "status", "close-out"] },
-    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-    "agenda": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "presented": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]+-[0-9A-Z]+$" } },
-    "decided": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]+-[0-9A-Z]+$" } },
-    "verdict": { "enum": ["go", "go-with-conditions", "no-go", "accepted", "rework"] },
-    "issue": { "type": "string" }
+    "kind": {
+      "enum": [
+        "kickoff",
+        "gate",
+        "milestone",
+        "decision",
+        "replan",
+        "status",
+        "close-out"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "agenda": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "presented": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]+-[0-9A-Z]+$"
+      }
+    },
+    "decided": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]+-[0-9A-Z]+$"
+      }
+    },
+    "verdict": {
+      "enum": [
+        "go",
+        "go-with-conditions",
+        "no-go",
+        "accepted",
+        "rework",
+        "closed",
+        "closed-with-open-items"
+      ]
+    },
+    "issue": {
+      "type": "string"
+    }
   }
 }

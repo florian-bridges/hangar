@@ -1,6 +1,6 @@
 # Timeline
 
-The project timeline: the overall picture and the active milestone. Budgets are in 5-hour usage windows and are set by the owner in meetings. The chief engineer keeps it current (`CLAUDE.md`, Handover and timeline); the shift reads the lines of the active milestone.
+The project timeline: the overall picture and the active milestone. Budgets are in 5-hour usage windows and are set by the owner in meetings. The chief engineer keeps it current (skill `chief-engineer`, Your four files); the shift reads the lines of the active milestone.
 
 ## Overview
 
