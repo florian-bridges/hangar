@@ -108,6 +108,6 @@ This project uses `plm` at the version pinned in `.plm-version`; it does not dev
 
 ## Commits
 
-* Work on the branch of your work package (`wp/<name>`), in your own worktree when agents work in parallel.
+* Work on the branch of your work package (`wp/<name>`). When you need your own worktree, create it in the worktrees folder (`worktrees` in `.claude/shift/shift.toml`): `git worktree add <worktrees>/<name> wp/<name>`; nowhere else.
 * **Commit after every step:** each item created or changed, each analysis run, each response to findings. Name the item IDs in the message. Unfinished work is committed too, with a message starting `WIP:`. **Push the branch after every commit** (`git push -u origin <branch>`; never `main`, never force). Never end your turn or hand over with uncommitted changes.
 * Commit messages do not include a `Co-Authored-By: Claude` line or any other Claude attribution.

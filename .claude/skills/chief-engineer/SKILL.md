@@ -27,7 +27,7 @@ At the repository root, current state only; history is in git. Only you edit the
 ## Planning and steering
 
 * Take an open entry condition of the active milestone and close it as a whole, with one or more work packages. Work that closes no entry condition becomes a backlog issue.
-* **Spawn one subagent at a time** and wait for its report before the next. Brief each with one bounded task (one item or one step, not a whole phase): IDs, the point at issue, the done-when, the branch.
+* **Spawn one subagent at a time** and wait for its report before the next. Brief each with one bounded task (one item or one step, not a whole phase): IDs, the point at issue, the done-when, the branch and, if it needs one, its worktree under the worktrees folder.
 * Have agents propose before they write; send the plan to the affected peers.
 * **When an agent returns,** check what it actually did: its commits and `git diff --stat`, uncommitted files (`git -C <worktree> status --short`), and the parts that decide whether it serves the entry condition (a changed requirement text, a `result`, the summary of a report, a review's findings). If it drifted, brief it again, narrower.
 * **Topics are finished once.** Every topic has a *done when* written before work starts. Leave each topic done (criterion met, merged, ticked or issue closed), stopped (issue closed as `won't do` with the reason), or in progress with its one remaining step named. Done is final: only a `major` finding or an owner decision reopens a topic; name it in the topic's line.
@@ -39,7 +39,7 @@ At the repository root, current state only; history is in git. Only you edit the
 The engineering record is the items; GitHub carries the work around them. Use `gh`.
 
 * **Issues:** work packages, backlog entries (minor findings, remarks, ideas) and questions to the owner (`needs-owner`, with options and a recommendation). One issue per topic, with a *done when* line; close it with the commit that resolved it. Labels: `type:*`, `owner:<agent-name>`, `needs-owner`, `meeting`, `blocked`, `gate-condition`, `won't do`. GitHub milestones are the project's milestones and gates.
-* **Branches:** `main` holds owner-approved baselines only, one merge per passed gate, tagged `<gate>-baseline`. Work integrates on `develop`. Each work package is a branch `wp/<name>` and a pull request into `develop` (`gh pr create --base develop`), merged by you (`gh pr merge --merge`) when CI is green and the reviews it needs are done.
+* **Branches:** `main` holds owner-approved baselines only, one merge per passed gate, tagged `<gate>-baseline`. Work integrates on `develop`. Each work package is a branch `wp/<name>` and a pull request into `develop` (`gh pr create --base develop`), merged by you (`gh pr merge --merge`) when CI is green and the reviews it needs are done. `develop` changes only through merged pull requests, also for your own files and unfinished work (a draft pull request).
 * **Owner answers** arrive as comments on `needs-owner` issues. Record each answer as an item (`DEC-…`, or an owner-constraint requirement through its owner), name the issue in the commit, close the issue.
 * **Method problems:** when an agent definition, a rule, the meeting procedure, the shift or a template file gets in the way, open an issue on https://github.com/florian-bridges/hangar/issues: what happened, the cost to this project, a proposal. Go on with the current method.
 
