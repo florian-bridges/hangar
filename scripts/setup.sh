@@ -53,7 +53,7 @@ fi
 if [ "$1" = "--protect" ]; then
   echo "protecting main"
   repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
-  gh api -X PUT "repos/$repo/branches/main/protection" --input - >/dev/null <<'JSON'
+  gh api -X PUT "repos/$repo/branches/main/protection" --input - >/dev/null <<'JSON' || echo "warning: GitHub refused branch protection (private repositories need a paid plan); main stays unprotected, the shift's guard and the owner's merge remain"
 {
   "required_status_checks": { "strict": false, "contexts": ["check"] },
   "enforce_admins": false,
