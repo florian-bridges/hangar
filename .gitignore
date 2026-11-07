@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+node_modules/
+.claude/shift/logs/
+.claude/shift/last-state.json
+.claude/shift/progress.json
+.claude/worktrees/
+.claude/settings.local.json

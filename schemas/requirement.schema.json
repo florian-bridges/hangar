@@ -1,0 +1,8 @@
+{
+  "required": ["text", "rationale"],
+  "properties": {
+    "text": { "type": "string", "minLength": 1 },
+    "rationale": { "type": "string", "minLength": 1 },
+    "verification": { "enum": ["analysis", "simulation", "test-bench", "flight-test", "inspection", "demonstration"] }
+  }
+}

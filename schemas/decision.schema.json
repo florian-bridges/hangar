@@ -1,0 +1,8 @@
+{
+  "required": ["question", "alternatives"],
+  "properties": {
+    "question": { "type": "string", "minLength": 1 },
+    "alternatives": { "type": "array", "items": { "type": "string" } },
+    "chosen": { "type": "string" }
+  }
+}

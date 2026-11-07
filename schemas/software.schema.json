@@ -1,0 +1,10 @@
+{
+  "required": ["source", "version", "license"],
+  "properties": {
+    "source": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "license": { "type": "string", "minLength": 1 },
+    "build": { "type": "string" },
+    "test": { "type": "string" }
+  }
+}

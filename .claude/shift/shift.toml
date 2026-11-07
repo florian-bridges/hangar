@@ -1,0 +1,16 @@
+# Configuration of the shift, the unattended chief-engineer run. Owner only: the guard keeps agents out of this folder.
+
+name = "hangar"            # project name; systemd units <name>-shift and <name>-remote
+model = "opus"             # model of the chief-engineer session
+branch = "develop"         # the shift integrates here; main holds owner-approved baselines
+workdir = "../hangar-run"  # the shift's own worktree, relative to the repository root
+worktrees = "../hangar-wt" # agents' worktrees, relative to the repository root
+ntfy_topic = ""            # optional phone push via ntfy.sh (public: anyone who knows the topic reads it)
+
+[limits]
+wrap_up_pct = 60.0      # context %: tell the chief engineer to finish the cycle
+hard_pct = 80.0         # context %: interrupt and ask for the state
+usage_wrap_up = 0.85    # 5-hour usage: start no new agent, end the cycle
+usage_start_max = 0.80  # 5-hour usage above which the runner waits for the reset before a cycle
+stall_windows = 2       # windows with work but no newly closed entry condition: stop for the owner
+overrun_stop = 1.5      # stop when a milestone uses this multiple of the budget the owner set

@@ -1,0 +1,16 @@
+{
+  "required": ["owner", "status"],
+  "properties": {
+    "owner": {
+      "enum": [
+        "chief-engineer",
+        "analysis-reviewer", "autonomy-engineer", "avionics-engineer",
+        "flight-control-engineer", "requirements-reviewer",
+        "safety-engineer", "simulation-engineer", "sizing-engineer",
+        "software-engineer", "software-reviewer", "structures-engineer",
+        "systems-engineer", "verification-engineer"
+      ]
+    },
+    "status": { "enum": ["draft", "in-review", "approved"] }
+  }
+}

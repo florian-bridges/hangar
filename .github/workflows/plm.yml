@@ -1,0 +1,23 @@
+name: plm
+on:
+  push:
+    branches: [main, develop, "wp/**"]
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # suspects compare against the confirmed versions in the history
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install plm at the pinned version
+        run: npm install -g "github:florian-bridges/PLM#$(cat .plm-version)"
+      - name: plm validate
+        run: plm validate
+      - name: plm suspects
+        run: |
+          plm suspects
+          test "$(plm suspects --format json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).data.length))')" = 0

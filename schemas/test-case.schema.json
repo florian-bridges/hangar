@@ -1,0 +1,7 @@
+{
+  "required": ["procedure", "method"],
+  "properties": {
+    "procedure": { "type": "string", "minLength": 1 },
+    "method": { "enum": ["analysis", "simulation", "test-bench", "inspection", "demonstration"] }
+  }
+}

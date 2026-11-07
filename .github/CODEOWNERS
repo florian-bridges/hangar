@@ -1,0 +1,9 @@
+# The owner reviews changes to the method, the tool configuration and the gates' baselines.
+# Replace @florian-bridges with the project owner's GitHub account.
+/CLAUDE.md        @florian-bridges
+/PROCESS.md       @florian-bridges
+/.claude/         @florian-bridges
+/.github/         @florian-bridges
+/plm.yaml         @florian-bridges
+/.plm-version     @florian-bridges
+/schemas/         @florian-bridges

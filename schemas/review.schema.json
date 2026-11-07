@@ -1,0 +1,27 @@
+{
+  "required": ["gate", "reviewer", "commit", "scope", "verdict"],
+  "properties": {
+    "gate": { "enum": ["SRR", "PDR", "CDR", "milestone", "peer"] },
+    "reviewer": { "type": "string", "minLength": 1 },
+    "commit": { "type": "string", "minLength": 1 },
+    "scope": { "type": "array", "items": { "type": "string" } },
+    "verdict": { "enum": ["pass", "pass-with-findings", "fail"] },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "item", "text", "state"],
+        "properties": {
+          "severity": { "enum": ["major", "minor", "remark"] },
+          "item": { "type": "string" },
+          "text": { "type": "string" },
+          "owner": { "type": "string" },
+          "response": { "type": "string" },
+          "issue": { "type": "string" },
+          "state": { "enum": ["open", "accepted", "rejected", "closed"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

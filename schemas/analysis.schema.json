@@ -1,0 +1,8 @@
+{
+  "required": ["method", "run", "result"],
+  "properties": {
+    "method": { "enum": ["calculation", "simulation", "measurement", "assessment"] },
+    "run": { "type": "string", "minLength": 1 },
+    "result": { "type": "string", "minLength": 1 }
+  }
+}

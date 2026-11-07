@@ -1,0 +1,16 @@
+# systemd user service for the shift. Install (replace <name> with `name` in shift.toml and <repo> with the checkout path):
+#   mkdir -p ~/.config/systemd/user
+#   sed 's#@REPO@#<repo>#' shift.service > ~/.config/systemd/user/<name>-shift.service && systemctl --user daemon-reload
+#   sudo loginctl enable-linger $USER     # keeps it running after you log out
+# Start: systemctl --user start <name>-shift     Log: journalctl --user -u <name>-shift -f
+# Not enabled at boot on purpose: after a stop for the owner, the owner starts it again.
+[Unit]
+Description=Hangar shift: unattended chief-engineer run
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=@REPO@/.claude/shift
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=@REPO@/.claude/shift/run.sh
+Restart=no

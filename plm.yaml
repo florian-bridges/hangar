@@ -1,0 +1,27 @@
+prefixes:
+  requirement: REQ-
+  part: PRT-
+  assembly: ASM-
+  test-case: TC-
+  test-run: RUN-
+  software: SW-
+  analysis: ANA-
+  decision: DEC-
+  interface: ICD-
+  review: REV-
+  hazard: HAZ-
+  meeting: MTG-
+folders:
+  assembly: subsystems
+  part: parts
+  software: software
+  analysis: analyses
+  decision: decisions
+  interface: interfaces
+  review: reviews
+  hazard: hazards
+  meeting: meetings
+informative:
+  - rationale
+  - links
+  - method

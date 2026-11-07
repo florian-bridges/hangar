@@ -1,0 +1,21 @@
+# systemd user service: the control room, reachable from the Claude app via Remote Control. Install:
+#   claude auth login                      # once, full login
+#   cd <repo> && claude remote-control     # once: answer "Enable Remote Control?" with y, then Ctrl+C
+#                                          # (the service has no TTY and hangs silently at that prompt)
+#   sed 's#@REPO@#<repo>#; s#@NAME@#<name>#' remote.service > ~/.config/systemd/user/<name>-remote.service
+#   systemctl --user daemon-reload && systemctl --user enable --now <name>-remote
+# Use: Claude app → "<name>" → start a session.     Log: journalctl --user -u <name>-remote -f
+[Unit]
+Description=Hangar control room (Claude Remote Control)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=@REPO@
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/.local/bin/claude remote-control --name "@NAME@" --spawn=same-dir
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=default.target

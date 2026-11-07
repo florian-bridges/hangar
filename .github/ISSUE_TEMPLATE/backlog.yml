@@ -1,0 +1,23 @@
+name: Backlog entry
+description: A minor finding, remark or idea that is not an entry condition. Majors stay in their review item.
+title: ""
+labels: ["type:backlog"]
+body:
+  - type: input
+    id: items
+    attributes:
+      label: Items
+      description: IDs and titles of the items concerned.
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue
+      description: What is wrong or missing, and the review finding it comes from, if any.
+    validations:
+      required: true
+  - type: input
+    id: done-when
+    attributes:
+      label: Done when

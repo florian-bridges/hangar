@@ -1,0 +1,23 @@
+name: Owner meeting
+description: A prepared owner meeting (usually opened by the chief engineer). Hold it with /meeting <MTG-ID>.
+title: "MTG-: "
+labels: ["meeting"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [kickoff, gate, milestone, decision, replan, status, close-out]
+    validations:
+      required: true
+  - type: input
+    id: pack
+    attributes:
+      label: Pack
+      description: Path of pack.md in the MTG item.
+  - type: textarea
+    id: decisions
+    attributes:
+      label: Decisions needed
+    validations:
+      required: true

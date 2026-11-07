@@ -1,0 +1,6 @@
+{
+  "required": ["between"],
+  "properties": {
+    "between": { "type": "array", "items": { "type": "string" }, "minItems": 2 }
+  }
+}

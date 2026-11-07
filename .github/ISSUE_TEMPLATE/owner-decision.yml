@@ -1,0 +1,30 @@
+name: Owner decision
+description: A question only the owner can answer. Answer it in a comment; the chief engineer records it as an item.
+title: "Decision: "
+labels: ["needs-owner"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What must be decided, and why it needs the owner (trade-off, relaxed requirement, owner constraint, budget).
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options
+      description: Each option with its consequences in numbers, citing analyses and decisions by ID.
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommendation
+    validations:
+      required: true
+  - type: input
+    id: blocks
+    attributes:
+      label: Blocks
+      description: The entry conditions or work packages that wait for the answer.

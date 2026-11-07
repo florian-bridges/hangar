@@ -1,0 +1,26 @@
+name: Work package
+description: One bounded piece of work that closes an entry condition or a backlog topic.
+title: "WP: "
+labels: ["type:work-package"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What the work package delivers, with the IDs and titles of the items concerned.
+    validations:
+      required: true
+  - type: input
+    id: done-when
+    attributes:
+      label: Done when
+      description: The concrete, checkable result, e.g. "REQ-AFVYXW states the assumption, merged on develop".
+    validations:
+      required: true
+  - type: dropdown
+    id: owner
+    attributes:
+      label: Owner
+      options: [chief-engineer, systems-engineer, safety-engineer, sizing-engineer, structures-engineer, avionics-engineer, flight-control-engineer, autonomy-engineer, software-engineer, simulation-engineer, verification-engineer]
+    validations:
+      required: true
