@@ -6,7 +6,7 @@ if [ ! -x .venv/bin/python ]; then
   uv venv -q .venv --python 3.12
   uv pip install -q --python .venv/bin/python -r requirements.txt
 fi
-eval "$(.venv/bin/python -c 'import config as c; print(f"WORKDIR={c.WORKDIR} BRANCH={c.CFG[\"branch\"]}")')"
+eval "$(.venv/bin/python -c 'import config as c; print("WORKDIR=%s BRANCH=%s" % (c.WORKDIR, c.CFG["branch"]))')"
 ROOT=$(cd ../.. && pwd)
 if [ "$WORKDIR" = "$ROOT" ]; then   # this checkout is the shift's own clone (workdir = ".")
   git -C "$ROOT" checkout -q "$BRANCH"
