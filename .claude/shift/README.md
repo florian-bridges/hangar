@@ -19,7 +19,7 @@ As a service: `systemd/shift.service` (start and stop by hand) and `systemd/remo
 * **Context budget (`budget.py`):** long tool output is cut; at `wrap_up_pct` the chief engineer ends the cycle, at `hard_pct` the turn is interrupted for a wrap-up.
 * **Guard (`guard.py`):** a PreToolUse hook on every tool call, subagents included. It blocks forced, bulk and delete pushes, anything on `main`, baseline tags, `status: approved`, repository settings and deletions through `gh`, writes outside the shift's clone and the agents' worktrees, and changes to this folder. It guards against mistakes; branch protection on `main` is the real barrier.
 * **Notifications:** a prepared meeting is a GitHub issue labelled `meeting`; a blocker or a runner stop opens a `needs-owner` issue. GitHub notifies the owner only when the shift uses its own GitHub account: GitHub sends no notification for issues the owner's own account opens, so a shift under the owner's account needs ntfy. Optional: a push via ntfy.sh (`SHIFT_NTFY_TOPIC` or `ntfy_topic`; public, anyone who knows the topic can read it).
-* **Is it running?** `pgrep -f "shift.py --project <name>"`: `run.sh` marks the process with the project name, so this works for any Linux user.
+* **Is it running?** `pgrep -f "shift[.]py --project <name>"`: `run.sh` marks the process with the project name, so this works for any Linux user.
 * **Stop:** any state but `continue`, 3 errors in a row, or `--max-cycles`. The last state is in `last-state.json`, the full log in `logs/`.
 
 If `ANTHROPIC_API_KEY` is set, the shift is billed to the API instead of your plan, and the log warns about it.

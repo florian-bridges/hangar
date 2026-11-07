@@ -24,7 +24,7 @@ The kickoff has no preparation: the owner starts it in a new repository with `/m
 
 ## 2. Hold (interactive, the owner is present)
 
-1. Check that the shift is not running: `pgrep -f "shift.py --project <name>"` (`name` in `.claude/shift/shift.toml`) finds nothing. Hold the meeting only then.
+1. Check that the shift is not running: `pgrep -f "shift[.]py --project <name>"` (`name` in `.claude/shift/shift.toml`) finds nothing. Hold the meeting only then.
 2. **Open:** the summary of `pack.md` in a few lines. Ask whether to go through the agenda in order or start with a point.
 3. **Each agenda point:** present it in at most ten lines, citing IDs with titles. Then wait for questions.
 4. **Questions:** answer from the items (`plm show`, `grep`, the scripts' output). For detail, spawn the owning agent with one narrow question. Never invent an answer: what the repository cannot answer becomes an action.

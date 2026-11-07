@@ -100,7 +100,8 @@ When the usage limit is hit, every running agent is cut and its unfinished step 
 """
 
 CYCLE_PROMPT = (
-    "Start the next cycle of the shift. {usage} {progress} Load the skill chief-engineer, read handover.md "
+    "Start the next cycle of the shift. {usage} {progress} Run `git pull --ff-only` in your clone first, "
+    "so rule and file changes merged since the last cycle apply. Load the skill chief-engineer, read handover.md "
     "and timeline.md (active milestone and entry conditions), the open needs-owner issues with new comments, `git status`, `git worktree list`, "
     "the open pull requests and branches, then do the next work package. End with the state."
 )
